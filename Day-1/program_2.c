@@ -47,9 +47,10 @@ static void * thread_start(void *arg)
 {
 	struct thread_info *tinfo = arg;
 	char *uargv, *p;
+	pthread_t tid = pthread_self();
 
 	printf("Thread %d: thread_id = %ld, top of stack near %p; argv_string=%s\n",
-			tinfo->thread_num, pthread_self(), &p, tinfo->argv_string);
+			tinfo->thread_num, tid,  &p, tinfo->argv_string);
 
 	uargv = strdup(tinfo->argv_string);
 	if (uargv == NULL)
